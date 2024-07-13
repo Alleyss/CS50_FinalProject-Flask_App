@@ -1,5 +1,6 @@
-Flask
+Flask==2.0.3
 Flask-SQLAlchemy
-psycopg2-binary
+psycopg2-binary==2.9.3
 Flask-Migrate
 virtualenv
+gunicorn==20.1.0
