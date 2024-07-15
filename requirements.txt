@@ -4,3 +4,4 @@ psycopg2-binary==2.9.3
 Flask-Migrate
 virtualenv
 gunicorn==20.1.0
+werkzeug==2.0.3
