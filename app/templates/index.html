@@ -1,12 +1,13 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Student Portal{% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-center align-items-center vh-100">
     <div class="text-center">
         <h1 class="mb-4">Welcome to the Student Portal</h1>
         <a href="/studentlogin" class="btn btn-primary btn-lg mx-2">Student Login</a>
+        <a href="/facultylogin" class="btn btn-secondary btn-lg mx-2">Faculty Login</a>
         <a href="/adminlogin" class="btn btn-secondary btn-lg mx-2">Admin Login</a>
     </div>
 </div>

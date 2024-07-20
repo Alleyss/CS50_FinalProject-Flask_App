@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %} Edit Branch {% endblock %}
+{% block heading %} Manage Branch {% endblock %}
+
+{% block content %}
+    <h1>Edit Branch Details</h1>
+    <form method="POST">
+        
+        <label for="branch_name">Branch Name:</label>
+        <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name" required><br>
+        <!-- Add more fields as necessary -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+{% endblock %}

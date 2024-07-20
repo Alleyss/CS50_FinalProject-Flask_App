@@ -1,0 +1,22 @@
+{% extends "base2.html" %}
+
+{% block title %}Faculty Login{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="col-4">
+        <h2 class="mb-4">Faculty Login</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

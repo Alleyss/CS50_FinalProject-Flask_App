@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %} Manage Students {% endblock %}
+{% block heading %} Manage Students {% endblock %}
+
+{% block content %}
+    <h1>Manage and View Students</h1>
+    <form method="POST" action="{{ url_for('routes.searchstudent') }}">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="username" placeholder="Search by Username" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Username</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Mobile Number</th>
+                <th>Address</th>
+                <th>Year of Joining</th>
+                <th>Branch</th>
+                <th>Current Semester</th>
+                <th>CGPA</th>
+
+                <!-- Add other columns as necessary -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+                <tr>
+                    <td>{{student.id}}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.full_name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.mobile_number}}</td>
+                    <td>{{ student.address}}</td>
+                    <td>{{ student.year_of_joining}}</td>
+                    <td>{{ student.branch}}</td>
+                    <td>{{ student.current_semester}}</td>
+                    <td>{{ student.cgpa}}</td>
+
+                    <!-- Add other columns as necessary -->
+                    <td>
+                        <a href="{{ url_for('routes.editstudent', username=student.username) }}">
+                            <button type="button">Edit</button>
+                        </a>
+                        <form action="{{ url_for('routes.deletestudent') }}" method="POST" >
+                            <input type="hidden" name="username" value="{{ student.username }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Student Course View {% endblock %}
+{% block heading %}Student Course View {% endblock %}
+{% block content %}
+<h2>Students for {{ course_code }}</h2>
+<ul>
+    {% for student in students %}
+        <li>{{ student.full_name }} ({{ student.username }})</li>
+    {% endfor %}
+</ul>
+{% endblock %}

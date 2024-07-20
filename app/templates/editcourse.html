@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Edit Course{% endblock %}
+{% block heading %}Edit Course{% endblock %}
+
+{% block content %}
+<h2>Edit Course</h2>
+<form method="POST" action="{{ url_for('routes.editcourse',course_code=course_code) }}">
+    
+    <div class="mb-3">
+        <label for="course_name" class="form-label">Course Name</label>
+        <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Course Name" required>
+    </div>
+    <div class="mb-3">
+        <label for="credits" class="form-label">Credits</label>
+        <input type="number" class="form-control" id="credits" name="credits" placeholder="Credits" required>
+    </div>
+    <div class="mb-3">
+        <label for="course_instructor_code" class="form-label">Course Instructor Code</label>
+        <select class="form-control" id="course_instructor_code" name="course_instructor_code" required>
+            <option value="" disabled selected>Select Course Instructor</option>
+            {% for faculty in faculties %}
+                <option value="{{ faculty.faculty_code }}">{{ faculty.full_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="branch_code" class="form-label">Branch Code</label>
+        <select class="form-control" id="branch_code" name="branch_code" required>
+            <option value="" disabled selected>Select Branch Code</option>
+            {% for branch in branches %}
+                <option value="{{ branch.branch_code }}">{{ branch.branch_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Update Course</button>
+</form>
+{% endblock %}

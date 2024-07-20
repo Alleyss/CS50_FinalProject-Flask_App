@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %} Add Attendance {% endblock %}
+{% block heading %} Add Attendance {% endblock %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Add Attendance</h2>
+    <form method="POST" action="{{ url_for('routes.addattendance') }}">
+        <div class="mb-3">
+            <label for="username" class="form-label">Student Username</label>
+            <select class="form-select" id="username" name="username" required>
+            <option value="" disabled selected>Select Username</option>
+                {% for student in students %}
+                    <option value="{{ student.username }}">{{ student.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="course_code" class="form-label">Course Code</label>
+            <select class="form-select" id="course_code" name="course_code" required>
+            <option value="" disabled selected>Select Course Code</option>
+                {% for course in courses %}
+                    <option value="{{ course.course_code }}">{{ course.course_code }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Attendance</label>
+            <span class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="attendance" id="present" value="Present" required>
+                <label class="form-check-label" for="present">Present</label>
+            </span>
+            <span class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="attendance" id="absent" value="Absent" required>
+                <label class="form-check-label" for="absent">Absent</label>
+            </span>
+        </div>
+        
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Attendance</button>
+    </form>
+</div>
+{% endblock %}
+

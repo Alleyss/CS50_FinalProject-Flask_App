@@ -1,7 +1,6 @@
-Flask==2.0.3
-Flask-SQLAlchemy
-psycopg2-binary==2.9.3
-Flask-Migrate
-virtualenv
-gunicorn==20.1.0
-werkzeug==2.0.3
+Flask==2.3.3
+Flask-SQLAlchemy==3.0.4
+SQLAlchemy==2.0.19
+Werkzeug==2.3.7
+psycopg2-binary==2.9.7
+Flask-Migrate==4.0.4

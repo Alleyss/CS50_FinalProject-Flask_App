@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Add Branch{% endblock %}
+{% block heading %} Add Branch {% endblock %}
+
+{% block content %}
+<h2>Add Branch</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="branch_code" class="form-label">Branch Code</label>
+        <input type="text" class="form-control" id="branch_code" name="branch_code" placeholder="Branch Code" required>
+    </div>
+    <div class="mb-3">
+        <label for="branch_name" class="form-label">Branch Name</label>
+        <input type="text" class="form-control" id="branch_name" name="branch_name" placeholder="Branch Name" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Branch</button>
+</form>
+{% endblock %}

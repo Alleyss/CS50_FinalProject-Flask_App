@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Add Course to Student{% endblock %}
+{% block heading %}Add Course {% endblock %}
+
+{% block content %}
+<h2>Add Course to Student</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Student Username</label>
+        <select class="form-control" id="username" name="username" required>
+            <option value="">Select Student by Username</option>
+            {% for student in students %}
+                <option value="{{ student.username }}">{{ student.username }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="course_code" class="form-label">Course Code</label>
+        <select class="form-control" id="course_code" name="course_code" required>
+            <option value="">Select Course Code</option>
+            {% for course in courses %}
+                <option value="{{ course.course_code }}">{{ course.course_code }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Course</button>
+</form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Add Faculty{% endblock %}
+
+{% block content %}
+<h2>Add faculty</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="faculty_code" class="form-label">Faculty Code</label>
+        <input type="text" class="form-control" id="faculty_code" name="faculty_code" placeholder="Faculty Code" required>
+    </div>
+    <div class="mb-3">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full name" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+    </div>
+    <div class="mb-3">
+        <label for="cabin_number" class="form-label">Cabin Number</label>
+        <input type="text" class="form-control" id="cabin_number" name="cabin_number" placeholder="Cabin Number" required>
+    </div>
+    <div class="mb-3">
+        <label for="specialization" class="form-label">Specialization</label>
+        <input type="text" class="form-control" id="specialization" name="specialization" placeholder="Specialization" required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>
+
+{% endblock %}

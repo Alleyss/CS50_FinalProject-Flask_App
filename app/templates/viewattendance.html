@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Attendance{% endblock %}
+{% block heading %}Manage Attendance{% endblock %}
+
+{% block content %}
+<h1>Manage Attendance</h1>
+<form method="POST" action="{{ url_for('searchattendance_by_username') }}">
+    <div class="mb-3">
+        <label>Search Attendance By Username</label>
+        <div></div>
+        <input type="text" class="form-control" name="username" placeholder="Search Attendance by Username" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+<form method="POST" action="{{ url_for('searchattendance_by_course') }}">
+    <div class="mb-3">
+        <label>Search Attendance By Course Code</label>
+        <div></div>
+        <input type="text" class="form-control" name="course_code" placeholder="Search Attendance by Course Code" required>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </div>
+</form>
+<table border="1">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Course Code</th>
+            <th>Attendance</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for attendance in attendance_records %}
+            <tr>
+                <td>{{ attendance.id }}</td>
+                <td>{{ attendance.username }}</td>
+                <td>{{ attendance.course_code }}</td>
+                <td>{{ attendance.attendance }}</td>
+                <td>{{ attendance.date }}</td>
+                <td>
+                    <a href="{{ url_for('editattendance', username=attendance.username, course_code=attendance.course_code) }}">
+                        <button type="button">Edit</button>
+                    </a>
+                    <form action="{{ url_for('deleteattendance') }}" method="POST" style="display:inline;">
+                        <input type="hidden" name="username" value="{{ attendance.username }}">
+                        <input type="hidden" name="course_code" value="{{ attendance.course_code }}">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

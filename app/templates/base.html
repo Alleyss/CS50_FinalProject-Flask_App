@@ -1,42 +1,194 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>{% block title %}{% endblock %}</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Student Portal</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-                <a class="nav-link active" aria-current="page" href="/">Home</a>
-                <a class="nav-link" href="/login">Login</a>
-                <a class="nav-link" href="/logout">Logout</a>
-            </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+            overflow-y: auto;
+            transition: all 0.3s;
+        }
+        .sidebar a {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            color: #000;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        .sidebar a.active, .sidebar a:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .sidebar a .bi {
+            margin-right: 10px;
+        }
+        .sidebar .sub-menu {
+            padding-left: 20px;
+            display: none;
+        }
+        .sidebar .sub-menu a {
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            color: #000;
+            text-decoration: none;
+        }
+        .sidebar .sub-menu a:hover {
+            background-color: #0056b3;
+        }
+        .sidebar .menu-item:hover .sub-menu {
+            display: block;
+        }
+        .content {
+            margin-left: 260px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h4 class="text-center">{% block heading %}{% endblock%}</h4>
+        <a href="#" data-content="home" class="nav-link">
+            <i class="bi bi-house-door"></i> Home
+        </a>
+        <div class="menu-item">
+            <a href="#" data-content="branch" class="nav-link">
+                <i class="bi bi-building"></i> Branch
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_branch" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Branch
+                </a>
+                <a href="#" data-content="manage_branch" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Branches
+                </a>
             </div>
         </div>
-    </nav>
-    
-    <div class="container mt-4">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-            {% if messages %}
-                {% for category, message in messages %}
-                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-        
-        {% block content %}{% endblock %}
+        <div class="menu-item">
+            <a href="#" data-content="course" class="nav-link">
+                <i class="bi bi-book"></i> Course
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_course" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Course
+                </a>
+                <a href="#" data-content="manage_course" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Courses
+                </a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-content="student" class="nav-link">
+                <i class="bi bi-person"></i> Student
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_student" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Student
+                </a>
+                <a href="#" data-content="manage_student" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Students
+                </a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-content="attendance" class="nav-link">
+                <i class="bi bi-calendar-check"></i> Attendance
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_attendance" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Attendance
+                </a>
+                <a href="#" data-content="manage_attendance" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Attendance
+                </a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-content="marks" class="nav-link">
+                <i class="bi bi-pencil"></i> Marks
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_marks" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Marks
+                </a>
+                <a href="#" data-content="manage_marks" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Marks
+                </a>
+            </div>
+        </div>
+        <div class="menu-item">
+            <a href="#" data-content="course_registration" class="nav-link">
+                <i class="bi bi-tags"></i> Manage Course Registration
+            </a>
+            <div class="sub-menu">
+                <a href="#" data-content="add_course_registration" class="nav-link">
+                    <i class="bi bi-plus-circle"></i> Add Course Registration
+                </a>
+                <a href="#" data-content="manage_course_registration" class="nav-link">
+                    <i class="bi bi-list"></i> Manage Course Registrations
+                </a>
+            </div>
+        </div>
+        <a href="#" data-content="notify_staff" class="nav-link">
+            <i class="bi bi-bell"></i> Notify Staff
+        </a>
+        <a href="#" data-content="notify_students" class="nav-link">
+            <i class="bi bi-bell"></i> Notify Students
+        </a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger w-100">
+            <i class="bi bi-box-arrow-right"></i> Logout
+        </a>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
-    </body>
+
+    <div class="content">
+        <div class="container mt-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+        {% block content %}
+        <!-- Content will be injected here -->
+        {% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-0EV0xV9a4A7B8El+7+xP3AX5xzOtP6AljIBo1QmF1wTcT2c7z7DQjqP6U6Of7J2a" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('.nav-link');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const content = this.getAttribute('data-content');
+                    loadContent(content);
+                    links.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+
+        function loadContent(content) {
+            // Example of loading content dynamically.
+            // Replace this with your actual logic to fetch and display content.
+            document.querySelector('.content').innerHTML = `<h2>Content for ${content}</h2>`;
+        }
+    </script>
+</body>
 </html>

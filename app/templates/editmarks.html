@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Marks{% endblock %}
+{%block heading %}Edit Marks{% endblock %}
+{% block content %}
+<h2>Edit Marks</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{ marks.username }}" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="course_code" class="form-label">Course Code</label>
+        <input type="text" class="form-control" id="course_code" name="course_code" value="{{ marks.course_code }}" readonly>
+    </div>
+    <div class="mb-3">
+        <label for="ExamType" class="form-label">Exam Type</label>
+        <input type="text" class="form-control" id="ExamType" name="ExamType" placeholder="Exam Type" required>
+    </div>
+    <div class="mb-3">
+        <label for="marks_obtained" class="form-label">Marks Obtained</label>
+        <input type="number" class="form-control" id="marks_obtained" name="marks_obtained" placeholder="Marks Obtained" required>
+    </div>
+    <div class="mb-3">
+        <label for="max_marks" class="form-label">Max Marks</label>
+        <input type="number" class="form-control" id="max_marks" name="max_marks" placeholder="Max Marks" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Edit Marks</button>
+</form>
+{% endblock %}

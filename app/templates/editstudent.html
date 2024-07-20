@@ -1,34 +1,27 @@
 {% extends "base.html" %}
-
-{% block title %}Edit Student{% endblock %}
+{% block title %} Edit Student {% endblock %}
+{% block heading %} Edit Student {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="col-4">
-        <h2 class="mb-4">Edit Student</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ student.name }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="mobile_number" class="form-label">Mobile Number</label>
-                <input type="text" class="form-control" id="mobile_number" name="mobile_number" value="{{ student.mobile_number }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" name="address" value="{{ student.address }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" value="{{ student.email }}" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" value="{{ student.password }}" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Update Student</button>
-        </form>
-    </div>
-</div>
+    <h1>Edit Student Details</h1>
+    <form method="POST"action="{{ url_for('routes.editstudent',username=username) }}">
+        <label for="full_name">Full Name:</label>
+        <input type="text" id="full_name" name="full_name" value="{{ student.full_name }}" required><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ student.email }}" required><br>
+        <label for="mobile_number">Mobile Number:</label>
+        <input type="text" id="mobile_number" name="mobile_number" value="{{ student.mobile_number }}" required><br>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="{{ student.address }}" required><br>
+        <label for="year_of_joining">Year of Joining:</label>
+        <input type="text" id="year_of_joining" name="year_of_joining" value="{{ student.year_of_joining }}" required><br>
+        <label for="branch">Branch:</label>
+        <input type="text" id="branch" name="branch" value="{{ student.branch }}" required><br>
+        <label for="current_semester">Current Semester:</label>
+        <input type="text" id="current_semester" name="current_semester" value="{{ student.current_semester }}" required><br>
+        <label for="cgpa">CGPA:</label>
+        <input type="text" id="cgpa" name="cgpa" value="{{ student.cgpa }}" required><br>
+        <!-- Add more fields as necessary -->
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
 {% endblock %}

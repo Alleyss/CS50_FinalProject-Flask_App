@@ -1,34 +1,56 @@
 {% extends "base.html" %}
-
 {% block title %}Add Student{% endblock %}
+{% block heading %} Add Students {% endblock %}
 
 {% block content %}
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="col-4">
-        <h2 class="mb-4">Add Student</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="mobile_number" class="form-label">Mobile Number</label>
-                <input type="text" class="form-control" id="mobile_number" name="mobile_number" required>
-            </div>
-            <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" id="address" name="address" required>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Add Student</button>
-        </form>
+<h2>Add Student</h2>
+<form method="POST">
+    <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
     </div>
-</div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+    </div>
+    <div class="mb-3">
+        <label for="full_name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name" required>
+    </div>
+    <div class="mb-3">
+        <label for="mobile_number" class="form-label">Mobile Number</label>
+        <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required>
+    </div>
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+    </div>
+    <div class="mb-3">
+        <label for="year_of_joining" class="form-label">Year of Joining</label>
+        <input type="number" class="form-control" id="year_of_joining" name="year_of_joining" placeholder="Year of Joining" required>
+    </div>
+    <div class="mb-3">
+        <label for="branch_code" class="form-label">Branch Code</label>
+        <select class="form-control" id="branch_code" name="branch_code" required>
+            <option value="" disabled selected>Select Branch Code</option>
+            {% for branch in branches %}
+                <option value="{{ branch.branch_code }}">{{ branch.branch_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="current_semester" class="form-label">Current Semester</label>
+        <input type="number" class="form-control" id="current_semester" name="current_semester" placeholder="Current Semester" >
+    </div>
+    <div class="mb-3">
+        <label for="cgpa" class="form-label">CGPA</label>
+        <input type="number" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA" >
+    </div>
+    <button type="submit" class="btn btn-primary">Add Student</button>
+</form>
+
 {% endblock %}

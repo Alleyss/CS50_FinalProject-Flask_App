@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+    {% block title %} Manage Faculties {% block %}
+
+{% block content %}
+    <h1>Manage and View Faculties</h1>
+    <form method="POST" action="{{ url_for('searchfaculty') }}">
+        <div class="mb-3">
+            <input type="text" class="form-control" name="faculty_code" placeholder="Search by Faculty Code" required>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Faculty Code</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Cabin Number</th>
+                <th>Specialization</th>
+                <!-- Add other columns as necessary -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for faculty in faculties %}
+                <tr>
+                    <td>{{faculty.id}}</td>
+                    <td>{{ faculty.faculty_code }}</td>
+                    <td>{{ faculty.full_name }}</td>
+                    <td>{{ faculty.email }}</td>
+                    <td>{{ faculty.cabin_number }}</td>
+                    <td>{{ faculty.specialization }}</td>
+                    <!-- Add other columns as necessary -->
+                    <td>
+                        <a href="{{ url_for('editstudent', username=student.username) }}">
+                            <button type="button">Edit</button>
+                        </a>
+                        <form action="{{ url_for('deletestudent') }}" method="POST" style="display:inline;">
+                            <input type="hidden" name="username" value="{{ student.username }}">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
