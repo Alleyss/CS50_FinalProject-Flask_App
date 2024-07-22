@@ -86,18 +86,18 @@ def admin():
 @admin_login_required
 def addstudent():
     if request.method == 'POST':
-        username=request.form('username')
+        username=request.form['username']
         email = request.form['email']
         password = request.form['password']
         full_name = request.form['full_name']
         mobile_number = request.form['mobile_number']
         address = request.form['address']
         year_of_joining = request.form['year_of_joining']
-        branch = request.form['branch']
+        branch_code = request.form['branch_code']
         current_semester = request.form['current_semester']
         cgpa = request.form['cgpa']
 
-        add_student(username, email, password, full_name, mobile_number, address, year_of_joining, branch, current_semester, cgpa)
+        add_student(username, email, password, full_name, mobile_number, address, year_of_joining, branch_code, current_semester, cgpa)
         flash("Student added successfully", "success")
         return redirect(url_for('routes.admin'))
     # Query the database for existing faculties and branch codes
@@ -219,7 +219,7 @@ def searchcourse():
     return redirect(url_for('managecourse'))
 ################################################################
 #CRUD Branch C
-@bp.route('/admin/addbranch', methods=['GET', 'POST'])
+@bp.route('/admin/addbranch', methods=['GET','POST'])
 @admin_login_required
 def addbranch():
     if request.method == 'POST':
@@ -513,7 +513,7 @@ def searchattendance_by_coursecode():
 #Add course
 @bp.route('/admin/add_course_to_student', methods=['GET', 'POST'])
 @admin_login_required
-def add_course_to_student_route():
+def add_course_to_student():
     if request.method == 'POST':
         username = request.form['username']
         course_code = request.form['course_code']

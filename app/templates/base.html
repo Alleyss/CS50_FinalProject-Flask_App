@@ -67,10 +67,10 @@
                 <i class="bi bi-building"></i> Branch
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_branch" class="nav-link">
+                <a href="{{ url_for('routes.addbranch') }}" data-content="add_branch" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Branch
                 </a>
-                <a href="#" data-content="manage_branch" class="nav-link">
+                <a href="{{ url_for('routes.managebranch') }}" data-content="manage_branch" class="nav-link">
                     <i class="bi bi-list"></i> Manage Branches
                 </a>
             </div>
@@ -80,10 +80,10 @@
                 <i class="bi bi-book"></i> Course
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_course" class="nav-link">
+                <a href="{{ url_for('routes.addcourse') }}" data-content="add_course" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Course
                 </a>
-                <a href="#" data-content="manage_course" class="nav-link">
+                <a href="{{ url_for('routes.managecourse') }}" data-content="manage_course" class="nav-link">
                     <i class="bi bi-list"></i> Manage Courses
                 </a>
             </div>
@@ -93,10 +93,10 @@
                 <i class="bi bi-person"></i> Student
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_student" class="nav-link">
+                <a href="{{ url_for('routes.addstudent') }}" data-content="add_student" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Student
                 </a>
-                <a href="#" data-content="manage_student" class="nav-link">
+                <a href="{{ url_for('routes.managestudent') }}" data-content="manage_student" class="nav-link">
                     <i class="bi bi-list"></i> Manage Students
                 </a>
             </div>
@@ -106,10 +106,10 @@
                 <i class="bi bi-calendar-check"></i> Attendance
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_attendance" class="nav-link">
+                <a href="{{ url_for('routes.addattendance') }}" data-content="add_attendance" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Attendance
                 </a>
-                <a href="#" data-content="manage_attendance" class="nav-link">
+                <a href="{{ url_for('routes.manageattendance') }}" data-content="manage_attendance" class="nav-link">
                     <i class="bi bi-list"></i> Manage Attendance
                 </a>
             </div>
@@ -119,10 +119,10 @@
                 <i class="bi bi-pencil"></i> Marks
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_marks" class="nav-link">
+                <a href="{{ url_for('routes.addmarks') }}" data-content="add_marks" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Marks
                 </a>
-                <a href="#" data-content="manage_marks" class="nav-link">
+                <a href="{{ url_for('routes.managemarks') }}" data-content="manage_marks" class="nav-link">
                     <i class="bi bi-list"></i> Manage Marks
                 </a>
             </div>
@@ -132,7 +132,7 @@
                 <i class="bi bi-tags"></i> Manage Course Registration
             </a>
             <div class="sub-menu">
-                <a href="#" data-content="add_course_registration" class="nav-link">
+                <a href="{{ url_for('routes.add_course_to_student') }}" data-content="add_course_registration" class="nav-link">
                     <i class="bi bi-plus-circle"></i> Add Course Registration
                 </a>
                 <a href="#" data-content="manage_course_registration" class="nav-link">
@@ -146,7 +146,7 @@
         <a href="#" data-content="notify_students" class="nav-link">
             <i class="bi bi-bell"></i> Notify Students
         </a>
-        <a href="{{ url_for('logout') }}" class="btn btn-danger w-100">
+        <a href="{{ url_for('routes.adminlogout') }}" class="btn btn-danger w-100">
             <i class="bi bi-box-arrow-right"></i> Logout
         </a>
     </div>
