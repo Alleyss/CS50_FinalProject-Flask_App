@@ -94,6 +94,7 @@ def home():
     if session['role']=='faculty':
         notifications = NotificationFaculty.query.filter_by(recipient_username=session['username']).all()
         return render_template('home.html', notifications=notifications)
+    
 
 #CRUD Student C
 @bp.route('/addstudent', methods=['GET', 'POST'])
