@@ -50,6 +50,7 @@ def adminlogin():
         admin = Admin.query.filter_by(username=username,password=password).first()
         if username == 'admin' and password == 'admin' or admin:
             session['admin_logged_in'] = True
+            session['username']='admin'
             flash("Admin login successful! ",'success')
             return redirect(url_for('routes.admin'))
         else:
