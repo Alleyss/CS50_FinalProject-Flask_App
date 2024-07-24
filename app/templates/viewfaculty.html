@@ -1,9 +1,10 @@
 {% extends "base.html" %}
-    {% block title %} Manage Faculties {% block %}
+{% block title %} Manage Faculties {% endblock %}
+{% block heading %} Manage Faculties {% endblock %}
 
 {% block content %}
     <h1>Manage and View Faculties</h1>
-    <form method="POST" action="{{ url_for('searchfaculty') }}">
+    <form method="POST" action="{{ url_for('routes.searchfaculty') }}">
         <div class="mb-3">
             <input type="text" class="form-control" name="faculty_code" placeholder="Search by Faculty Code" required>
             <button type="submit" class="btn btn-primary">Search</button>
@@ -12,7 +13,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>#</th>
+                
                 <th>Faculty Code</th>
                 <th>Full Name</th>
                 <th>Email</th>
@@ -25,7 +26,7 @@
         <tbody>
             {% for faculty in faculties %}
                 <tr>
-                    <td>{{faculty.id}}</td>
+                    
                     <td>{{ faculty.faculty_code }}</td>
                     <td>{{ faculty.full_name }}</td>
                     <td>{{ faculty.email }}</td>
@@ -33,11 +34,11 @@
                     <td>{{ faculty.specialization }}</td>
                     <!-- Add other columns as necessary -->
                     <td>
-                        <a href="{{ url_for('editstudent', username=student.username) }}">
+                        <a href="{{ url_for('routes.editfaculty', faculty_code=faculty.faculty_code) }}">
                             <button type="button">Edit</button>
                         </a>
-                        <form action="{{ url_for('deletestudent') }}" method="POST" style="display:inline;">
-                            <input type="hidden" name="username" value="{{ student.username }}">
+                        <form action="{{ url_for('routes.deletefaculty') }}" method="POST" style="display:inline;">
+                            <input type="hidden" name="faculty_code" value="{{ faculty.faculty_code }}">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>
                     </td>

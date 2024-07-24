@@ -1,9 +1,9 @@
 {% extends "base.html" %}
-    {% block title %} Manage Branches {% block %}
+    {% block title %} Manage Branches {% endblock %}
 
 {% block content %}
     <h1>Manage and View Branches</h1>
-    <form method="POST" action="{{ url_for('searchbranch') }}">
+    <form method="POST" action="{{ url_for('routes.searchbranch') }}">
         <div class="mb-3">
             <input type="text" class="form-control" name="branch_code" placeholder="Search by Branch Code" required>
             <button type="submit" class="btn btn-primary">Search</button>
@@ -12,7 +12,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>#</th>
+                
                 <th>Branch Code</th>
                 <th>Branch Name</th>
                 <!-- Add other columns as necessary -->
@@ -22,15 +22,15 @@
         <tbody>
             {% for branch in branches %}
                 <tr>
-                    <td>{{ branch.id }}</td>
+                    
                     <td>{{ branch.branch_code }}</td>
                     <td>{{ branch.branch_name }}</td>
                     <!-- Add other columns as necessary -->
                     <td>
-                        <a href="{{ url_for('editbranch', branch_code=branch.branch_code) }}">
+                        <a href="{{ url_for('routes.editbranch', branch_code=branch.branch_code) }}">
                             <button type="button">Edit</button>
                         </a>
-                        <form action="{{ url_for('deletebranch') }}" method="POST" style="display:inline;">
+                        <form action="{{ url_for('routes.deletebranch') }}" method="POST" style="display:inline;">
                             <input type="hidden" name="branch_code" value="{{ branch.branch_code }}">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>

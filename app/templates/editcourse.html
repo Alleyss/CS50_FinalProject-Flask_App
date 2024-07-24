@@ -7,6 +7,10 @@
 <form method="POST" action="{{ url_for('routes.editcourse',course_code=course_code) }}">
     
     <div class="mb-3">
+        <label for="course_code" class="form-label">Course Code</label>
+        <input type="text" class="form-control" id="course_code" name="course_code" value="{{course_code}}" readonly>
+    </div>
+    <div class="mb-3">
         <label for="course_name" class="form-label">Course Name</label>
         <input type="text" class="form-control" id="course_name" name="course_name" placeholder="Course Name" required>
     </div>

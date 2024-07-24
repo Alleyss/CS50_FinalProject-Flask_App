@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<div class="container">
+    <h2>Welcome, {{ session['username']}}</h2>
+    <h3>Your Notifications</h3>
+    <ul class="list-group">
+        {% for notification in notifications %}
+            <li class="list-group-item">
+                <strong>{{ notification.date }}:</strong> {{ notification.message }}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,18 +1,18 @@
 {% extends "base.html" %}
-    {% block title %} Manage Courses {% block %}
-
+{% block title %} Manage Courses {% endblock %}
+{% block heading %} Manage Courses {% endblock %}
 {% block content %}
     <h1>Manage and View Courses</h1>
-    <form method="POST" action="{{ url_for('searchcourse') }}">
+    <form method="POST" action="{{ url_for('routes.searchcourse') }}">
         <div class="mb-3">
             <input type="text" class="form-control" name="course_code" placeholder="Search by Course Code" required>
             <button type="submit" class="btn btn-primary">Search</button>
         </div>
     </form>
-    <table border="1">
+    <table border="1" >
         <thead>
             <tr>
-                <th>#</th>
+                
                 <th>Course Code</th>
                 <th>Course Name</th>
                 <th>Credits</th>
@@ -26,7 +26,7 @@
         <tbody>
             {% for course in courses %}
                 <tr>
-                    <td>{{ course.id }}</td>
+                    
                     <td>{{ course.course_code }}</td>
                     <td>{{ course.course_name }}</td>
                     <td>{{ course.credits }}</td>
@@ -35,10 +35,10 @@
                     
                     <!-- Add other columns as necessary -->
                     <td>
-                        <a href="{{ url_for('editcourse', course_code=course.course_code) }}">
+                        <a href="{{ url_for('routes.editcourse', course_code=course.course_code) }}">
                             <button type="button">Edit</button>
                         </a>
-                        <form action="{{ url_for('deletecourse') }}" method="POST" style="display:inline;">
+                        <form action="{{ url_for('routes.deletecourse') }}" method="POST" style="display:inline;">
                             <input type="hidden" name="course_code" value="{{ course.course_code }}">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form>

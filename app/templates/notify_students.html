@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Notify Students{% endblock %}
+{% block heading %}Notify Students{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Notify Students</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" name="notify_all" value="true" class="btn btn-primary mb-3">Notify All Students</button>
+        <h3>Or Select a Student</h3>
+        <select class="form-select" name="recipient_username" >
+            <option value="" disabled selected>Select Student username</option>
+            {% for student in students %}
+                <option value="{{ student.username }}">{{ student.username }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary mt-3">Send Notification</button>
+    </form>
+</div>
+{% endblock %}

@@ -5,14 +5,16 @@
     <h1>Edit Faculty Details</h1>
     <form method="POST">
         
+        <label for="faculty_code">Faculty Code:</label>
+        <input type="text" id="faculty_code" name="faculty_code" value="{{faculty.faculty_code}}" readonly><br>
         <label for="full_name">Full Name:</label>
-        <input type="text" id="full_name" name="full_name" placeholder="Full Name" required><br>
+        <input type="text" id="full_name" name="full_name" value="{{faculty.full_name}}" required><br>
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" placeholder="Email" required><br>
+        <input type="email" id="email" name="email" value="{{faculty.email}}" required><br>
         <label for="cabin_number">Cabin Number:</label>
-        <input type="text" id="cabin_number" name="cabin_number" placeholder="Cabin Number" required><br>
+        <input type="text" id="cabin_number" name="cabin_number" value="{{faculty.cabin_number}}" required><br>
         <label for="specialization">Specialization</label>
-        <input type="text" id="specialization" name="specialization" placeholder="Specialization" required><br>
+        <input type="text" id="specialization" name="specialization" value="{{faculty.specialization}}" required><br>
         <!-- Add more fields as necessary -->
         <button type="submit" class="btn btn-primary">Update</button>
     </form>

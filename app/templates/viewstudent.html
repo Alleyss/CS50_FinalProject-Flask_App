@@ -13,7 +13,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>#</th>
+                
                 <th>Username</th>
                 <th>Full Name</th>
                 <th>Email</th>
@@ -31,14 +31,14 @@
         <tbody>
             {% for student in students %}
                 <tr>
-                    <td>{{student.id}}</td>
+                    
                     <td>{{ student.username }}</td>
                     <td>{{ student.full_name }}</td>
                     <td>{{ student.email }}</td>
                     <td>{{ student.mobile_number}}</td>
                     <td>{{ student.address}}</td>
                     <td>{{ student.year_of_joining}}</td>
-                    <td>{{ student.branch}}</td>
+                    <td>{{ student.branch_code}}</td>
                     <td>{{ student.current_semester}}</td>
                     <td>{{ student.cgpa}}</td>
 
@@ -47,6 +47,7 @@
                         <a href="{{ url_for('routes.editstudent', username=student.username) }}">
                             <button type="button">Edit</button>
                         </a>
+                        
                         <form action="{{ url_for('routes.deletestudent') }}" method="POST" >
                             <input type="hidden" name="username" value="{{ student.username }}">
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>

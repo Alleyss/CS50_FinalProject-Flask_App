@@ -54,12 +54,147 @@
             margin-left: 260px;
             padding: 20px;
         }
+        /* Style for all tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+}
+
+table th,
+table td {
+    padding: 12px;
+    border: 1px solid #dee2e6; /* Light gray border */
+}
+
+table thead {
+    background-color: #f8f9fa; /* Light gray background for header */
+    color: #495057; /* Dark gray text color */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Alternating row colors */
+}
+
+table tbody tr:hover {
+    background-color: #e9ecef; /* Highlight row on hover */
+}
+
+table th {
+    text-align: center; /* Center align header text */
+}
+
+table td {
+    text-align: left; /* Left align body text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Smaller text on smaller screens */
+    }
+
+    table th,
+    table td {
+        padding: 8px; /* Smaller padding on smaller screens */
+    }
+}
+/* Style for the entire form */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for form elements */
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+form input,
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+
+form textarea {
+    resize: vertical; /* Allow vertical resizing only */
+    min-height: 100px;
+}
+
+form .form-check {
+    margin-bottom: 10px;
+}
+
+form .form-check label {
+    display: inline-block;
+    margin: 0;
+    font-weight: normal;
+}
+
+form .form-check-input {
+    margin-right: 5px;
+}
+
+form .form-control-feedback {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+form button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+form button:disabled {
+    background-color: #c6c6c6;
+    cursor: not-allowed;
+}
+
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h4 class="text-center">{% block heading %}{% endblock%}</h4>
-        <a href="#" data-content="home" class="nav-link">
+        <a href="{{url_for('routes.home')}}"  >
             <i class="bi bi-house-door"></i> Home
         </a>
         <div class="menu-item">
@@ -67,10 +202,10 @@
                 <i class="bi bi-building"></i> Branch
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addbranch') }}" data-content="add_branch" class="nav-link">
+                <a href="{{ url_for('routes.addbranch') }}" data-content="add_branch" >
                     <i class="bi bi-plus-circle"></i> Add Branch
                 </a>
-                <a href="{{ url_for('routes.managebranch') }}" data-content="manage_branch" class="nav-link">
+                <a href="{{ url_for('routes.managebranch') }}" data-content="manage_branch" >
                     <i class="bi bi-list"></i> Manage Branches
                 </a>
             </div>
@@ -80,10 +215,10 @@
                 <i class="bi bi-book"></i> Course
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addcourse') }}" data-content="add_course" class="nav-link">
+                <a href="{{ url_for('routes.addcourse') }}" data-content="add_course" >
                     <i class="bi bi-plus-circle"></i> Add Course
                 </a>
-                <a href="{{ url_for('routes.managecourse') }}" data-content="manage_course" class="nav-link">
+                <a href="{{ url_for('routes.managecourse') }}" data-content="manage_course" >
                     <i class="bi bi-list"></i> Manage Courses
                 </a>
             </div>
@@ -93,11 +228,23 @@
                 <i class="bi bi-person"></i> Student
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addstudent') }}" data-content="add_student" class="nav-link">
+                <a href="{{ url_for('routes.addstudent') }}" data-content="add_student">
                     <i class="bi bi-plus-circle"></i> Add Student
                 </a>
-                <a href="{{ url_for('routes.managestudent') }}" data-content="manage_student" class="nav-link">
+                <a href="{{ url_for('routes.managestudent') }}" data-content="manage_student">
                     <i class="bi bi-list"></i> Manage Students
+                </a>
+            </div>
+        </div><div class="menu-item">
+            <a href="#" data-content="student" class="nav-link">
+                <i class="bi bi-person"></i> Faculty
+            </a>
+            <div class="sub-menu">
+                <a href="{{ url_for('routes.addfaculty') }}" data-content="add_faculty">
+                    <i class="bi bi-plus-circle"></i> Add Faculty
+                </a>
+                <a href="{{ url_for('routes.managefaculty') }}" data-content="manage_faculty">
+                    <i class="bi bi-list"></i> Manage Faculty
                 </a>
             </div>
         </div>
@@ -106,10 +253,10 @@
                 <i class="bi bi-calendar-check"></i> Attendance
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addattendance') }}" data-content="add_attendance" class="nav-link">
+                <a href="{{ url_for('routes.addattendance') }}" data-content="add_attendance">
                     <i class="bi bi-plus-circle"></i> Add Attendance
                 </a>
-                <a href="{{ url_for('routes.manageattendance') }}" data-content="manage_attendance" class="nav-link">
+                <a href="{{ url_for('routes.manageattendance') }}" data-content="manage_attendance">
                     <i class="bi bi-list"></i> Manage Attendance
                 </a>
             </div>
@@ -119,31 +266,31 @@
                 <i class="bi bi-pencil"></i> Marks
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addmarks') }}" data-content="add_marks" class="nav-link">
+                <a href="{{ url_for('routes.addmarks') }}" data-content="add_marks">
                     <i class="bi bi-plus-circle"></i> Add Marks
                 </a>
-                <a href="{{ url_for('routes.managemarks') }}" data-content="manage_marks" class="nav-link">
+                <a href="{{ url_for('routes.managemarks') }}" data-content="manage_marks">
                     <i class="bi bi-list"></i> Manage Marks
                 </a>
             </div>
         </div>
         <div class="menu-item">
             <a href="#" data-content="course_registration" class="nav-link">
-                <i class="bi bi-tags"></i> Manage Course Registration
+                <i class="bi bi-tags"></i>Course Registration
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.add_course_to_student') }}" data-content="add_course_registration" class="nav-link">
+                <a href="{{ url_for('routes.add_course_to_student') }}" data-content="add_course_registration" >
                     <i class="bi bi-plus-circle"></i> Add Course Registration
                 </a>
-                <a href="#" data-content="manage_course_registration" class="nav-link">
+                <a href="{{ url_for('routes.manage_student_course') }}" data-content="manage_course_registration" >
                     <i class="bi bi-list"></i> Manage Course Registrations
                 </a>
             </div>
         </div>
-        <a href="#" data-content="notify_staff" class="nav-link">
+        <a href="{{ url_for('routes.notify_staff')}}" data-content="notify_staff" >
             <i class="bi bi-bell"></i> Notify Staff
         </a>
-        <a href="#" data-content="notify_students" class="nav-link">
+        <a href="{{url_for('routes.notify_students')}}" data-content="notify_students" >
             <i class="bi bi-bell"></i> Notify Students
         </a>
         <a href="{{ url_for('routes.adminlogout') }}" class="btn btn-danger w-100">

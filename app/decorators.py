@@ -17,3 +17,11 @@ def faculty_login_required(f):
             return redirect(url_for('routes.facultylogin'))
         return f(*args, **kwargs)
     return decorated_function
+def admin_or_faculty_login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if not session.get('faculty_logged_in') and not session.get('admin_logged_in'):
+            flash('You need to log in as admin or faculty to access this page.', 'danger')
+            return redirect(url_for('routes.index'))
+        return f(*args, **kwargs)
+    return decorated_function

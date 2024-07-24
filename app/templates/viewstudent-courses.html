@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Student Courses{% endblock %}
+{% block heading %}Manage Student Courses{% endblock %}
+
+{% block content %}
+<h1>Manage Student Courses</h1>
+
+<table border="1">
+    <thead>
+        <tr>
+            
+            <th>Username</th>
+            <th>Fullname</th>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        {% for c in student_courses %}
+            <tr>
+                
+                <td>{{c.username }}</td>
+                <td>{{c.full_name}}</td>
+                <td>{{ c.course_code }}</td>
+                <td>{{c.course_name}}</td>
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

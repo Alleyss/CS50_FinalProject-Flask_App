@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Notify Staff{% endblock %}
+{% block heading %}Notify Staff{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Notify Staff</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="date" class="form-label">Date</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+        </div>
+        <button type="submit" name="notify_all" value="true" class="btn btn-primary mb-3">Notify All Staff</button>
+        <h3>Or Select a Staff Member</h3>
+        <select class="form-select" name="recipient_username" >
+            <option value="" disabled selected>Select Faculty-code</option>
+            {% for staff in staff_members %}
+                <option value="{{ staff.faculty_code }}">{{ staff.faculty_code }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit" class="btn btn-primary mt-3">Send Notification</button>
+    </form>
+</div>
+{% endblock %}

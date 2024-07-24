@@ -1,6 +1,6 @@
 import re
 from app import db
-from app.models import Student, Attendance, Marks, Course, Branch, Faculty
+from app.models import Student, Attendance, Marks, Course, Branch, Faculty,student_courses
 
 # Student CRUD
 def add_student(username, email, password, full_name, mobile_number, address, year_of_joining, branch_code, current_semester, cgpa):
@@ -80,17 +80,16 @@ def get_all_courses():
 #Faculties CRUD
 #Add Faculty Option
 def add_faculty(faculty_code,full_name, email, password, cabin_number, specialization):
-    new_faculty = Faculty(faculty_code=faculty_code,full_name=full_name, email=email, cabin_number=cabin_number, specialization=specialization)
-    new_faculty.set_password(password)
+    new_faculty = Faculty(faculty_code=faculty_code,full_name=full_name, email=email,password=password, cabin_number=cabin_number, specialization=specialization)
     db.session.add(new_faculty)
     db.session.commit()
 #Edit Icon
-def update_faculty(faculty_code, name, email, password, cabin_number, specialization):
+def update_faculty(faculty_code, name, email, cabin_number, specialization):
     faculty = Faculty.query.get(faculty_code)
     if faculty:
         faculty.name = name
         faculty.email = email
-        faculty.set_password(password)
+        
         faculty.cabin_number = cabin_number
         faculty.specialization = specialization
         db.session.commit()
@@ -135,17 +134,17 @@ def delete_marks(username, course_code):
     return marks_record
 #Search Marks for particular Student
 def get_marks_by_username(username):
-    marks_record = Marks.query.get(username)
+    marks_record = Marks.query.filter_by(username=username).all()
     if marks_record:
         return marks_record
 #manage option with course_code input
 def get_marks_by_course(course_code):
-    marks_record = Marks.query.get(course_code)
+    marks_record = Marks.query.filter_by(course_code=course_code).all()
     if marks_record:
         return marks_record
 
 def get_all_marks():
-    return Marks.query.get.all()
+    return Marks.query.all()
 ##################################################
 # Attendance CRUD Operations
 #Add Option
@@ -168,15 +167,16 @@ def delete_attendance(username, course_code):
         db.session.delete(attendance_record)
         db.session.commit()
     return attendance_record
-#Search for User
+# Search for User by Username
 def get_attendance_by_username(username):
-    return Attendance.query.get(username)
-#Manage Attendance option with input
+    return Attendance.query.filter_by(username=username).all()
+
+# Search for Attendance by Course Code
 def get_attendance_by_coursecode(course_code):
-    return Attendance.query.get(course_code)
+    return Attendance.query.filter_by(course_code=course_code).all()
 
 def get_all_attendance():
-    return Attendance.query.get.all()
+    return Attendance.query.all()
 ####################################################
 # Branch CRUD Operations
 #Add Option
@@ -206,10 +206,10 @@ def get_all_branches():
     return Branch.query.all()
 #Association Table CRUD
 #CRUD Add a course to student
-def add_course_to_student(username, course_code):
+def addcourse_student(username, course_code):
     student = get_student_by_id(username)
     course = get_course_by_id(course_code)
-    if student and course and course not in student.courses:
+    if student and course:
         student.courses.append(course)
         db.session.commit()
         return True
@@ -235,3 +235,4 @@ def remove_course_from_student(username, course_code):
         db.session.commit()
         return True
     return False
+

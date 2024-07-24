@@ -4,7 +4,9 @@
 
 {% block content %}
     <h1>Edit Student Details</h1>
-    <form method="POST"action="{{ url_for('routes.editstudent',username=username) }}">
+    <form method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ student.username }}" readonly><br>
         <label for="full_name">Full Name:</label>
         <input type="text" id="full_name" name="full_name" value="{{ student.full_name }}" required><br>
         <label for="email">Email:</label>
@@ -15,9 +17,15 @@
         <input type="text" id="address" name="address" value="{{ student.address }}" required><br>
         <label for="year_of_joining">Year of Joining:</label>
         <input type="text" id="year_of_joining" name="year_of_joining" value="{{ student.year_of_joining }}" required><br>
-        <label for="branch">Branch:</label>
-        <input type="text" id="branch" name="branch" value="{{ student.branch }}" required><br>
-        <label for="current_semester">Current Semester:</label>
+        <div class="mb-3">
+            <label for="branch_code" class="form-label">Branch Code</label>
+            <select class="form-control" id="branch_code" name="branch_code" required>
+                <option value="" disabled selected>Select Branch Code</option>
+                {% for branch in branches %}
+                    <option value="{{ branch.branch_code }}">{{ branch.branch_name }}</option>
+                {% endfor %}
+            </select>
+        </div><label for="current_semester">Current Semester:</label>
         <input type="text" id="current_semester" name="current_semester" value="{{ student.current_semester }}" required><br>
         <label for="cgpa">CGPA:</label>
         <input type="text" id="cgpa" name="cgpa" value="{{ student.cgpa }}" required><br>

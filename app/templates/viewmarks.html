@@ -5,7 +5,7 @@
 
 {% block content %}
 <h1>Manage Marks</h1>
-<form method="POST" action="{{ url_for('searchmarks_by_username') }}">
+<form method="POST" action="{{ url_for('routes.searchmarks_by_username') }}">
     <div class="mb-3">
         <label>Search Marks By Username</label>
         <div></div>
@@ -13,7 +13,7 @@
         <button type="submit" class="btn btn-primary">Search</button>
     </div>
 </form>
-<form method="POST" action="{{ url_for('searchmarks_by_course') }}">
+<form method="POST" action="{{ url_for('routes.searchmarks_by_coursecode') }}">
     <div class="mb-3">
         <label>Search Marks By Course Code</label>
         <div></div>
@@ -24,7 +24,7 @@
 <table border="1">
     <thead>
         <tr>
-            <th>#</th>
+            
             <th>Username</th>
             <th>Course Code</th>
             <th>Exam Type</th>
@@ -36,17 +36,17 @@
     <tbody>
         {% for mark in marks %}
             <tr>
-                <td>{{ mark.id }}</td>
+                
                 <td>{{ mark.username }}</td>
                 <td>{{ mark.course_code }}</td>
                 <td>{{ mark.ExamType }}</td>
                 <td>{{ mark.marks_obtained }}</td>
                 <td>{{ mark.max_marks }}</td>
                 <td>
-                    <a href="{{ url_for('editmarks', username=mark.username, course_code=mark.course_code) }}">
+                    <a href="{{ url_for('routes.editmarks', username=mark.username, course_code=mark.course_code) }}">
                         <button type="button">Edit</button>
                     </a>
-                    <form action="{{ url_for('deletemarks') }}" method="POST" style="display:inline;">
+                    <form action="{{ url_for('routes.deletemarks') }}" method="POST" style="display:inline;">
                         <input type="hidden" name="username" value="{{ mark.username }}">
                         <input type="hidden" name="course_code" value="{{ mark.course_code }}">
                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
