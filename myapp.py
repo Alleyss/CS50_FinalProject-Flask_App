@@ -1,5 +1,5 @@
 from app import create_app, db
-from app.models import Student,Attendance, Marks, Course, Faculty, Branch,Admin
+from app.models import Student,Attendance, Marks, Course, Faculty, Branch,Admin,NotificationFaculty,NotificationStudent
 
 app = create_app()
 
