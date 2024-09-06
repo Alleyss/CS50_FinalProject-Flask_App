@@ -2,5 +2,5 @@ import os
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'pranav'
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://school_k16a_user:6kn90FWVuX5yv8rLfZpf4RtWA6Nv4CxS@dpg-cqfvftt6l47c73bmq9gg-a.oregon-postgres.render.com/school_k16a'
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or 'postgresql://schooldb_khj2_user:VwFQq2QYRRPuadc55Vvam1mWWGohRaCj@dpg-crdg5qd2ng1s73fuirkg-a.oregon-postgres.render.com/schooldb_khj2'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
