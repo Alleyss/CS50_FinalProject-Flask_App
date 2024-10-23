@@ -42,5 +42,6 @@ Coming to the UI part I couldnot design a custom theme, template and utilized Bo
 
 ###### I used ChatGPT for generating the basic source code so that I can proceed with making required changes.
 <br>
+
 ###### This is CS50.
 
