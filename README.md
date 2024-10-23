@@ -31,7 +31,7 @@ It consists of the schema of my database. It consists of all the table declarati
 ###### routes.py
 It consists of all the existing routes of the application where we can possibly navigate in the application.
 ###### decorators.py
-It consists of functions through which we can restrict access to particular routes and make it protected. In my case I created admin_login_requried decorator wich takes the user to admin login page if the user if not admin with a warning flash message.
+It consists of functions through which we can restrict access to particular routes and make it protected. In my case I created admin_login_requried decorator wich takes the user to admin login page if the user is not admin and shows a warning flash message.
 
 For me the most challenging part was designing schema for the database. It was quite a struggle for pre-decising the functions to be implemented and to create a schema in such a way that we can thoroughly implement them.
 Creation of so many routes, functions in crud.py and mainly the templates was simple but very much time taking. Testing every function is working as intended took alot of time.
