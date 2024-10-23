@@ -15,9 +15,11 @@ It is where the connection of database(localhost in my case) is declared.
 ###### myapp.py
 It is where the creation of app takes place.
 <br>
+
 Going to the app folder. The static and templates folder are standardized to write CSS and HTML files. Since I used Bootstrap for CSS except for the sidebar which I added in the style tag in base.html itself
 <br>
 Templates are:
+<br>
 1.Layout: base.html, base2.html
 <br>
 2.Remaining all templates are for various routes which I created for the project.
@@ -34,8 +36,11 @@ It consists of functions through which we can restrict access to particular rout
 For me the most challenging part was designing schema for the database. It was quite a struggle for pre-decising the functions to be implemented and to create a schema in such a way that we can thoroughly implement them.
 Creation of so many routes, functions in crud.py and mainly the templates was simple but very much time taking. Testing every function is working as intended took alot of time.
 Coming to the UI part I couldnot design a custom theme, template and utilized Bootstrap for all the templates since I am not familiar with CSS in depth to implement it properly.
-######I used external resouces such as Youtube.(Tech WIth Tim Flask Playlist). 
 <br>
-######I used ChatGPT for generating the basic source code so that I can proceed with making required changes.
-######This is CS50.
+###### I used external resouces such as Youtube.(Tech WIth Tim Flask Playlist). 
+<br>
+
+###### I used ChatGPT for generating the basic source code so that I can proceed with making required changes.
+<br>
+###### This is CS50.
 
