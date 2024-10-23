@@ -118,6 +118,27 @@ def addstudent():
     # Query the database for existing faculties and branch codes
     branches = Branch.query.all()
     return render_template('addstudent.html',branches=branches)
+
+@bp.route('/studentregister', methods=['GET', 'POST'])
+def registerstudent():
+    if request.method == 'POST':
+        username=request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        full_name = request.form['full_name']
+        mobile_number = request.form['mobile_number']
+        address = request.form['address']
+        year_of_joining = request.form['year_of_joining']
+        branch_code = request.form['branch_code']
+        current_semester = request.form['current_semester']
+        cgpa = request.form['cgpa']
+
+        add_student(username, email, password, full_name, mobile_number, address, year_of_joining, branch_code, current_semester, cgpa)
+        flash("Student added successfully", "success")
+        return render_template('student.html')
+    # Query the database for existing faculties and branch codes
+    branches = Branch.query.all()
+    return render_template('register.html',branches=branches)
 #CRUD Student U
 @bp.route('/editstudent/<string:username>', methods=['GET', 'POST'])
 @admin_login_required

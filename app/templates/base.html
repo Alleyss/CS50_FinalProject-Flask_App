@@ -211,15 +211,15 @@ form button:disabled {
             </div>
         </div>
         <div class="menu-item">
-            <a href="#" data-content="course" class="nav-link">
-                <i class="bi bi-book"></i> Course
+            <a href="#" data-content="student" class="nav-link">
+                <i class="bi bi-person"></i> Faculty
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addcourse') }}" data-content="add_course" >
-                    <i class="bi bi-plus-circle"></i> Add Course
+                <a href="{{ url_for('routes.addfaculty') }}" data-content="add_faculty">
+                    <i class="bi bi-plus-circle"></i> Add Faculty
                 </a>
-                <a href="{{ url_for('routes.managecourse') }}" data-content="manage_course" >
-                    <i class="bi bi-list"></i> Manage Courses
+                <a href="{{ url_for('routes.managefaculty') }}" data-content="manage_faculty">
+                    <i class="bi bi-list"></i> Manage Faculty
                 </a>
             </div>
         </div>
@@ -235,19 +235,21 @@ form button:disabled {
                     <i class="bi bi-list"></i> Manage Students
                 </a>
             </div>
-        </div><div class="menu-item">
-            <a href="#" data-content="student" class="nav-link">
-                <i class="bi bi-person"></i> Faculty
+        </div>
+        <div class="menu-item">
+            <a href="#" data-content="course" class="nav-link">
+                <i class="bi bi-book"></i> Course
             </a>
             <div class="sub-menu">
-                <a href="{{ url_for('routes.addfaculty') }}" data-content="add_faculty">
-                    <i class="bi bi-plus-circle"></i> Add Faculty
+                <a href="{{ url_for('routes.addcourse') }}" data-content="add_course" >
+                    <i class="bi bi-plus-circle"></i> Add Course
                 </a>
-                <a href="{{ url_for('routes.managefaculty') }}" data-content="manage_faculty">
-                    <i class="bi bi-list"></i> Manage Faculty
+                <a href="{{ url_for('routes.managecourse') }}" data-content="manage_course" >
+                    <i class="bi bi-list"></i> Manage Courses
                 </a>
             </div>
         </div>
+        
         <div class="menu-item">
             <a href="#" data-content="attendance" class="nav-link">
                 <i class="bi bi-calendar-check"></i> Attendance

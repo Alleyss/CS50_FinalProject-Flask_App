@@ -1,0 +1,62 @@
+{% extends "base2.html" %}
+
+{% block title %}Register Student{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <class="col-4">
+        <br><br><br>
+        <h2 >Register Student</h2>
+<form method="POST">
+    <div class="mb-3">
+        <!-- <label for="username" class="form-label">Username</label> -->
+        Username <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="email" class="form-label">Email</label> -->
+        Email <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="password" class="form-label">Password</label> -->
+        Password <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="full_name" class="form-label">Full Name</label> -->
+        Full Name <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Full Name" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="mobile_number" class="form-label">Mobile Number</label> -->
+        Mobile Number <input type="text" class="form-control" id="mobile_number" name="mobile_number" placeholder="Mobile Number" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="address" class="form-label">Address</label> -->
+        Address <input type="text" class="form-control" id="address" name="address" placeholder="Address" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="year_of_joining" class="form-label">Year of Joining</label> -->
+        Year of Joining <input type="number" class="form-control" id="year_of_joining" name="year_of_joining" placeholder="Year of Joining" required>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="branch_code" class="form-label">Branch Code</label> -->
+        Branch Code <select class="form-control" id="branch_code" name="branch_code" required>
+            <option value="" disabled selected>Select Branch Code</option>
+            {% for branch in branches %}
+                <option value="{{ branch.branch_code }}">{{ branch.branch_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="mb-3">
+        <!-- <label for="current_semester" class="form-label">Current Semester</label> -->
+        Current Semester <input type="number" class="form-control" id="current_semester" name="current_semester" placeholder="Current Semester" >
+    </div>
+    <div class="mb-3">
+        <!-- <label for="cgpa" class="form-label">CGPA</label> -->
+        CGPA <input type="number" step="0.01" class="form-control" id="cgpa" name="cgpa" placeholder="CGPA" >
+    </div>
+    <button type="submit" class="btn btn-primary">Register Student</button>
+</form>
+    </class>
+</div>
+
+
+{% endblock %}

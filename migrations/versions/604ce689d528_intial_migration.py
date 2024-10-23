@@ -1,8 +1,8 @@
-"""Changes in schema added adminTable
+"""Intial Migration
 
-Revision ID: 67a8238140b3
+Revision ID: 604ce689d528
 Revises: 
-Create Date: 2024-10-22 16:22:11.096868
+Create Date: 2024-10-23 22:59:01.537559
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '67a8238140b3'
+revision = '604ce689d528'
 down_revision = None
 branch_labels = None
 depends_on = None
